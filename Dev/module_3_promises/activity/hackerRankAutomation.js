@@ -78,7 +78,7 @@ browserStartPromise
     let passwordTypingPromise = page.type("input[type='password']", "hackerrank");
     return passwordTypingPromise;
 }).then(function(){
-    let loginClickedPromise = page.click(".ui-btn.ui-btn-large.ui-btn-primary.auth-button.ui-btn-styled", {delay : 100});
+    let loginClickedPromise = page.click(".ui-btn.ui-btn-large.ui-btn-primary.auth-button.ui-btn-styled", {delay : 500});
     return loginClickedPromise;
 })
 
