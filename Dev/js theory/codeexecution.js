@@ -57,21 +57,22 @@
 
 //example - 03 when i didn't declare var inside function, then it take value from outsidee 
 
-console.log("line number 45" , a);
-var a;
+// console.log("line number 45" , a);
+// var a;
 
-a = 10;
+// a = 10;
 
-console.log(a);
+// console.log(a);
 
-fn();
+// fn();
 
-function fn(){
-    console.log("line number 70" , a);
-    a++;
-    console.log("val of a", a);
-}
+// function fn(){
+//     console.log("line number 70" , a);
+//     // var a;
+//     a++;
+//     console.log("val of a", a);
+// }
 
-fn();
-console.log("76" , a);
+// fn();
+// console.log("76" , a);
 
