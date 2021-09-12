@@ -18,15 +18,15 @@ let browserStartPromise = puppeteer.launch({
 // let codeTxt = codesObj.answers[0];
 // console.log(codeTxt);
 
-// let page, browser
+let page, browser
 
 (async function fn() {
   try {
     let browserObj = await browserStartPromise;
     console.log("Browser opened");
-    let browser = browserObj;
+    browser = browserObj;
     // new tab
-    let page = await browserObj.newPage();
+    page = await browserObj.newPage();
     await page.goto("https://www.google.com/");
     await page.type(".gLFyf.gsfi", "hackerrank");
     await page.keyboard.press("Enter", { delay: 100 });
@@ -46,8 +46,9 @@ let browserStartPromise = puppeteer.launch({
     await waitAndClick(".topic-name[data-automation='algorithms']", page);
     await waitAndClick(".checkbox-wrap>input[value='warmup']", page);
     let questionsArray = await page.$$(".js-track-click.challenge-list-item");
+    let url = page.url();
     for(let i = 1 ; i < questionsArray.length; i++){
-        await questionSolver(page, questionsArray[i], answers[i - 1]);
+        await questionSolver(page, url,questionsArray[i], answers[i - 1]);
            
     }
     
@@ -57,25 +58,29 @@ let browserStartPromise = puppeteer.launch({
 })();
 
 
-async function questionSolver(page, question, answer){
+async function questionSolver(page,url, question, answer){
     try{
+      // let pages = browser.pages();
+      let newpage =await browser.newPage();
+       await newpage.goto(url)
         await question.click();
         await waitAndClick(".monaco-editor.no-user-select.vs",page);
         await waitAndClick(".checkbox-input", page);
         await waitAndClick(".custominput", page);
-        await page.type(".custominput", answer, { delay: 50 });
-        await page.keyboard.down("Control");
-        await page.keyboard.press("A");
-        await page.keyboard.press("X");
-        await page.keyboard.up("Control");
-        await waitAndClick(".monaco-editor.no-user-select.vs",page);
-        await page.keyboard.down("Control");
-        await page.keyboard.press("A");
-        await page.keyboard.press("V");
-        await page.keyboard.up("Control");
-        await waitAndClick(".hr-monaco-submit", page);
-        await waitForSelector(".congrats-heading", {visible : true});
-        await page.goBack();  
+        await newpage.type(".custominput", answer, { delay: 50 });
+        await newpage.keyboard.down("Control");
+        await newpage.keyboard.press("A");
+        await newpage.keyboard.press("X");
+        await newpage.keyboard.up("Control");
+        await waitAndClick(".monaco-editor.no-user-select.vs",newpage);
+        await newpage.keyboard.down("Control");
+        await newpage.keyboard.press("A");
+        await newpage.keyboard.press("V");
+        await newpage.keyboard.up("Control");
+        await waitAndClick(".hr-monaco-submit", newpage);
+        await newpage.waitForSelector(".congrats-heading", {visible : true});
+        // await page.goBack();  
+        
 
         // await page.goBack();
     }catch(err){
