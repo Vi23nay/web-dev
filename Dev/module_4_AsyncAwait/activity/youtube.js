@@ -1,17 +1,14 @@
+//playlist name : ????
+//total no of views : ????
+//Total no. of videos : ????
+// Average length of video : ????
+// Total length of playlist : ????
+// Total length of playlist At 1.25x : ????
+// Total length of playlist At 1.50x : ????
+// Total length of playlist At 1.75x : ????
+// Total length of playlist At 2.00x : ????
 
-// No of videos : 500
-
-// Average length of video : 6 minutes, 46 seconds
-
-// Total length of playlist : 2 days, 8 hours, 29 minutes, 15 seconds
-
-// At 1.25x : 1 day, 21 hours, 11 minutes, 24 seconds
-
-// At 1.50x : 1 day, 13 hours, 39 minutes, 30 seconds
-
-// At 1.75x : 1 day, 8 hours, 16 minutes, 42 seconds
-
-// At 2.00x : 1 day, 4 hours, 14 minutes, 37 seconds
+//fetched data -> excel sheet
 
 const puppeteer = require("puppeteer");
 let xlsx = require("xlsx");
@@ -29,7 +26,7 @@ let page;
         page = await browser.newPage();
         await page.goto("https://www.youtube.com/playlist?list=PLzkuLC6Yvumv_Rd5apfPRWEcjf9b1JRnq");
         await page.waitForSelector("h1[id = 'title']", {visible : true})
-        //first element
+        //***************playlist name  ************************/
         let element = await page.$("h1[id = 'title']");
         let playlistName = await page.evaluate(
             function(element){
@@ -57,7 +54,7 @@ let page;
         let totalVideos = value.split(" ")[0].trim();
         // console.log(totalVideos);
         
-        //******content being loaded after every 100 videos*********//
+        //******new content will load after every 100 videos*********//
         let loadingAppearsCount = Math.floor(totalVideos / 100);
         for(let i = 0 ; i < loadingAppearsCount ; i++){
             //spinner selector //but spinner selector hides after loading new content 
