@@ -1,3 +1,8 @@
+//***************************YOUTUBE PLAYLIST ANALYZER ***************************/
+
+
+////*******Functionality**********/
+
 //playlist name : ????
 //total no of views : ????
 //Total no. of videos : ????
@@ -14,6 +19,9 @@ const puppeteer = require("puppeteer");
 let xlsx = require("xlsx");
 let fs = require("fs");
 let path = require("path");
+
+//paste link here//
+let link = "https://www.youtube.com/playlist?list=PLzkuLC6Yvumv_Rd5apfPRWEcjf9b1JRnq"
 let page;
 
 (async function fn() {
@@ -24,7 +32,7 @@ let page;
             args : ["--start-maximized"],
         })
         page = await browser.newPage();
-        await page.goto("https://www.youtube.com/playlist?list=PLzkuLC6Yvumv_Rd5apfPRWEcjf9b1JRnq");
+        await page.goto(link);
         await page.waitForSelector("h1[id = 'title']", {visible : true})
         //***************playlist name  ************************/
         let element = await page.$("h1[id = 'title']");
@@ -75,7 +83,6 @@ let page;
 
         let arr = [];
 
-        // list first 100 videos console.table => of video number,name, time
         let videoNumberArr = await page.$$("yt-formatted-string[id = 'index']");
         let timeDurationArr = await page.$$("span[id = 'text']");
         
@@ -128,19 +135,29 @@ let page;
 
             console.log("Average length of video :")
             timeInActualFormat(timeInSeconds / videoNameArr.length);
+
             console.log("``````````````````````````````````");
+
             console.log("Total length of playlist :");
             timeInActualFormat(timeInSeconds);
+
             console.log("``````````````````````````````````");
+
             console.log("Total length of playlist at 1.25x :");
             timeInActualFormat(timeInSeconds / 1.25);
+
             console.log("``````````````````````````````````");
+
             console.log("Total length of playlist at 1.50x :");
             timeInActualFormat(timeInSeconds / 1.50);
+
             console.log("``````````````````````````````````");
+
             console.log("Total length of playlist at 1.75x :");
             timeInActualFormat(timeInSeconds / 1.75);
+
             console.log("``````````````````````````````````");
+
             console.log("Total length of playlist at 2.00x :");
             timeInActualFormat(timeInSeconds / 2.00);
 
@@ -150,11 +167,7 @@ let page;
             }catch(err){
         console.log(err);
     }
-            
 
-
-
-            
 })();
 
 const waitTillHTMLRendered = async (page, timeout = 10000) => {
