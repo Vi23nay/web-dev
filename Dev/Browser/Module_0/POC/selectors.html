@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<!-- heading -->
+
+<head>
+    <title>Welcome to spaceX</title>
+
+    <!-- style using CSS -->
+    <style>
+        /*1 -> simple selectors */
+        /* via id */
+        /* h1 {
+            color: lightblue;
+        }
+
+        p {
+            background-color: lightpink;
+        }
+
+        /* Via unique-id */
+        /* #unique-id -> to access id*/
+        /* #unique { */
+            /* text-decoration: underline; */
+        /* } */
+
+        /* Via class */
+        /* To target class -> . */
+        /* .common { */
+            /* background-color: lightgreen; */
+        /* } */ 
+
+        /* 2- combinator Selectors */
+            /* Space */
+            /* search indept for p inside itself */
+        .common p {
+            color : lightcoral;
+        }
+
+            /* immediate */
+        .common>p{
+            background-color : yellow;
+        }
+            /* access only immediate sibling */
+        .common + div {
+            color : red;
+        }
+            /* access all siblings at same level*/
+        .common ~ div {
+            color : lightpink;
+        }
+        
+
+        /* 3-> attribute selectors */
+            /* general */
+        label[for] {
+            color : brown;
+        }
+            /* specific */
+        label[for = "name"] {
+            background-color : red;
+        }
+
+        input[type] {
+            background-color : blue;
+        }
+    </style>
+
+</head>
+
+<!-- content of page -->
+
+<body>
+    <!-- heading -->
+    <h1>Hello everyone</h1>
+    <h2>Hello everyone</h2>
+    <h3>Hello everyone</h3>
+
+    <!-- Paragraph -->
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore, aut! Fugiat numquam quas expedita animi!
+        Repudiandae dolorum, vitae ex ad quas perferendis incidunt quam placeat ab! Ab reprehenderit deleniti at.
+    </p>
+
+    <!-- anchor -->
+    <a href="https://www.google.com/">Go to google</a>
+
+
+    <!-- division -->
+    <div id="unique">
+        Hello
+        <p>Pepcoder</p>
+    </div>
+    <div class="common common2">
+        <div class="something1">Something</div>
+        <div class="something2">
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae sunt, pariatur similique voluptates
+                repellendus iste temporibus quidem nisi doloribus itaque, ut reiciendis aspernatur dicta accusantium!
+
+            </p>
+        </div>
+        <div class="something3">Something</div>
+        <p>Hello!!!!!</p>
+    </div>
+    <div class="common"> common Hello</div>
+    <div></div>
+    <div class="common2">common2 Different hello</div>
+    <div class="sib"> I am sibling</div>
+
+    <!-- unordered-list -->
+    <ul>
+        <li>one</li>
+        <li>two</li>
+        <li>three</li>
+    </ul>
+
+
+    <!-- Ordered-list -->
+    <ol>
+        <li>one</li>
+        <li>two</li>
+        <li>three</li>
+    </ol>
+
+    <span>Content filling tag somewhat same like para and div but difference discuss while learning css</span>
+
+    <!-- add image -->
+    <img src="https://media.istockphoto.com/photos/first-person-point-of-view-of-a-woman-paddling-on-a-stand-up-paddle-picture-id1288844330?s=612x612"
+        alt="">
+
+    <!-- adding image from local storage -->
+    <img width="500" src="./photo-1453728013993-6d66e9c9123a.jpg" alt="Some image">
+
+    <!-- use of alt in img tag -->
+    <img width="500" src="" alt="Some image">
+
+
+    <form>
+        <label for="name">Name</label>
+        <input type="text" id="name">
+
+        <label for="email">email</label>
+        <input type="email" id="email">
+
+        <label for="">password</label>
+        <input type="password">
+
+        <label for="">Phone</label>
+        <input type="number">
+    </form>
+</body>
+
+
+
+</html>
