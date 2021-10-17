@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 1rem is relative to html font size */
+        /* responsive design -> device and layout -> change*/ */
+        /* default 1rem -> 16px */
+        html{
+            font-size : 20px;
+        }
+        body{
+            margin : 0px;
+            background-color : rgb(207, 207, 102);
+        }
+        .box{
+            height : 160px;
+            width : 160px;
+            /* height : 100px; */
+            /* width : 100px; */
+        }
+        .one{
+            background-color : lightskyblue;
+            /* space inside an element
+            margin-bottom:  20px;
+            margin-left : 20px;
+            margin-top: 10px; */
+        }
+
+        .two{
+            background-color : lightpink;
+        }
+        body>*{
+            border-bottom: 5px solid black;;
+        }
+        /* rem -> relative unit(calculate) */
+        /* default 1rem = 16px; */
+        .type-b>*{
+
+            height : 10rem;
+            width : 10rem;
+        }
+
+        .type-c>*{
+            height : 50vh;
+            width : 50vw;
+        }
+
+        .type-d{
+            height : 20rem;
+            width : 30rem;
+            background-color : lightgreen;
+        }
+        /* depends on parent */
+        .type-d>*{
+            height: 40%; /* 40% of 20rem */
+            width : 50%; /* 50% of 30rem */
+        }
+    
+    </style>
+</head>
+<body> 
+    <!-- px -->
+    <div class="type-a">
+        <div class="box one">1</div>
+        <div class="box two">2</div>
+    </div>
+    <!-- rem -->
+    <div class="type-b">
+        <div class="box one">3</div>
+        <div class="box two">4</div>
+    </div>
+    <!-- vh vw -->
+    <div class="type-c">
+        <div class="box one">5</div>
+        <div class="box two">6</div>
+    </div>
+    <!-- percentage -->
+    <div class="type-d">
+        <div class="box one">7</div>
+        <div class="box two">8</div>
+    </div>
+</body>
+</html>

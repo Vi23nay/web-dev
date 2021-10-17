@@ -6,7 +6,7 @@ let allColors = ['pink', 'blue', 'green', 'black'];
 let defaultColor = "black";
 let colorBtns = document.querySelectorAll(".color");
 let cFilter = "";//concept for showing all tasks after filterartion //if double click on same color 
-
+let crossContainer = document.querySelector(".multiply_container");
 
 input.addEventListener("keydown",function(e){
     // console.log(e);
@@ -49,6 +49,7 @@ function createTask(id, task) {
         
     })
 }
+//------------------------------------------FILTERING---------------------------------------------------//
 
 // //filtering -> my way
 // for(let i = 0; i < colorBtns.length ; i++){
@@ -62,8 +63,8 @@ function createTask(id, task) {
 //filtering by bubbling concept
 let colorGroupContainer = document.querySelector(".color-group_container");
 colorGroupContainer.addEventListener("click", function(e) {
-    console.log(e.target);
-    console.log(e.currentTarget);
+    // console.log(e.target);
+    // console.log(e.currentTarget);
     if(e.target != colorGroupContainer){
         let clickedColor = e.target.classList[1];
         filterCards(clickedColor);
@@ -72,7 +73,6 @@ colorGroupContainer.addEventListener("click", function(e) {
 function filterCards(filteredColor){
     let allTasks = document.querySelectorAll(".task_header");
     if(cFilter != filteredColor){
-        cFilter = filteredColor;
         for(let j = 0; j < allTasks.length; j++){
             let headerColor = allTasks[j].classList[1];
             if(headerColor == filteredColor){
@@ -85,6 +85,8 @@ function filterCards(filteredColor){
             }
             
         }
+
+        cFilter = filteredColor;
         
     }else{
         cFilter = "";
@@ -96,3 +98,14 @@ function filterCards(filteredColor){
 
 })
 
+//-------------------------------------------REMOVE-------------------------------------------------//
+crossContainer.addEventListener("click", function() {
+    let allTasks = document.querySelectorAll(".task_container");
+    for(let i = 0; i < allTasks.length; i++){
+        allTasks[i].addEventListener("click", function(e) {
+            console.log(e);
+            allTasks[i].remove();
+        })
+    }
+
+})

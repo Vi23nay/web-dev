@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body{
+            margin : 0px;
+        }
+        .block{
+            background-color : red;
+            /* width -> 100% of parent */
+            /* height => content height */
+            /*you can also provide ht and wd to an element but still it takes it's full space */
+            height : 200px;
+            width : 300px;
+            /* display : inline-block; */
+        }
+        h1{
+            height: 200px; 
+            width : 300px;
+            border : 1px solid black;
+        }
+        .inline {
+            /* height and width are equivalent to content height */
+            font-size: 2rem;
+            background-color : lightgreen;
+            /* padding : 10px; */
+            margin : 10px;
+            /* we can't give ht and wd to an inline element */
+        }
+        /* inline-block */
+        .inline-block {
+            /* height width -> inline  */
+            display : inline-block;
+            background-color : lightcoral;
+            /* we can set height and width */
+            height : 100px;
+            width : 100px;
+
+        }
+    </style>
+    <!-- block -->
+    <!-- div, h1, p, ul, li -> all are block level elems -->
+    <!-- initially ht = content ht -->
+    <!-- width = 100% of parent -->
+    <div class="block">
+        <h1>Hello</h1>
+    </div>
+
+    <!-- inline -->
+    <span class = "inline">Hello again from span</span>
+    <span class = "inline">Hello again from span</span>
+    <span class = "inline">Hello again from span</span>
+    
+    <!-- inline-block -->
+    <div class="inline-block">
+        Hello inline block
+    </div>
+    <div class="inline-block">
+        Hello inline block
+    </div>
+</body>
+</html>

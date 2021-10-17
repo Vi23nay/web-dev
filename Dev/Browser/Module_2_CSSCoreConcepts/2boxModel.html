@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            /* box-sizing: border-box; */
+        }
+        body{
+            margin : 0px;
+            background-color : rgb(207, 207, 102);
+        }
+        /* element is in the form of box */
+        .box{
+            height : 100px;
+            width : 100px;
+        }
+        .one{
+            background-color : lightskyblue;
+            /* space inside an element */
+            margin-bottom:  20px;
+            margin-left : 20px;
+            margin-top: 10px;
+        }
+
+        .two{
+            background-color : lightpink;
+            /* space inside an element */
+            padding : 30px;
+            border : 10px solid black;
+        }
+
+        .type-b>.two{
+            box-sizing: border-box;
+            background-color : red;
+
+        }
+    </style>
+</head>
+<body>
+     <!-- element rendred height: 
+        height provide + paddingTop + paddingBottom +borderTop + borderBottom -->
+    <!-- height:100px +  30px + 30px + 10px + 10px -> 180px-->
+    <!-- width:100px +  30px + 30px + 10px + 10px -> 180px-->
+    <div class="type-a">
+        <div class="box one">1</div>
+        <div class="box two">2</div>
+    </div>
+    <!-- box-sizing : border-box property -->
+    <div class="type-b">
+        <div class="box one">3</div>
+        <div class="box two">4</div>
+    </div>
+</body>
+</html>
