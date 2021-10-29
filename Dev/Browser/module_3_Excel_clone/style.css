@@ -1,0 +1,196 @@
+/* generic styling */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0px;
+}
+.menu_bar {
+    height: 5rem;
+    background-color: rgba(27, 70, 27, 0.849);
+}
+
+.formula_bar {
+    height: 2rem;
+    background-color: rgb(216, 209, 209);
+}
+
+.sheets_container {
+    height: 2.5rem;
+    background-color: rgb(218, 209, 209);
+}
+
+
+/********************** GRID CONTAINER**************** */
+
+.grid_container {
+    height: calc(100vh - (5rem + 2rem + 2.5rem));
+    /* background-color: rgb(14, 31, 14); */
+    overflow: auto;
+}
+
+
+.top_row {
+    display: flex;
+    position: relative;
+    top : -2rem;
+    left : 2rem;
+}
+.cell {
+    border: 0.1px solid rgb(158, 157, 157);
+    height: 1.5rem;
+    text-align: center;
+    outline: none;
+}
+/* only top row -> cell */
+.top_row .cell {
+    background-color : rgb(233, 231, 231);
+    text-align: center;
+    border-top : 1.5px solid rgb(48, 46, 46);
+    border-bottom : 1.5px solid rgb(48, 46, 46);
+    /* these cells are fixed */
+    min-width: 7rem;
+}
+.left_col{
+    background-color : rgb(233, 231, 231);
+    width : 2rem;
+    text-align: center;
+    position: relative;
+    top : -2rem;
+    
+}
+.left_col .cell{
+    border-right: 1.5px solid rgb(48, 46, 46);
+}
+
+.top_left_column{
+    height : 2rem;
+    width : 2rem;
+    background-color: rgb(201, 197, 197);
+}
+.tlc{
+    height : 60%;
+    background-color : white;
+    width : 85%;
+}
+.row{display: flex}
+.grid .cell{
+    min-width:7rem;
+    background-color : white;
+    text-align: start;
+    cursor: cell;
+    /* overflow: auto; */
+}
+.grid_container{
+    position: relative;
+}
+.grid{
+    /* grid position related to gird_container */
+    position: absolute;
+    top : 1.5rem;
+    left : 2rem
+}
+
+
+/********************** FORMULA BAR************* */
+.formula_bar{
+    display : flex;
+    align-items: center;
+    /* justify-content: center; */
+}
+/* giving margin to : */
+.formula_bar>input{
+    margin-left: 1rem;
+    margin-right: 1rem;
+    border : none;
+}
+.formula_bar>*{
+    height : 70%;
+}
+.address_input{
+    width : 4rem;
+    margin-left: 1rem;
+    text-align : center;
+}
+.formula_bar>img{
+    opacity : 0.5;
+}
+.formula_input{
+    width : calc(100vw - 8rem);
+}
+
+/*******************************Menu bar***************************/
+.menu_bar{
+    display : flex;
+}
+.new_open_save_container{
+    display : flex;
+    align-items: center;
+    border-right: 0.1px solid rgb(175, 173, 173);
+}
+.new_open_save_container>*{
+    padding: 1rem;
+}
+
+.material-icons{
+    font-size : 2rem;
+}
+.main_formatting_container{
+    display : flex;
+    width : 19rem;
+    border-right: 0.1px solid rgb(175, 173, 173);
+}
+.formatting_container{
+    display : flex;
+    margin-left: 1rem;
+    position: relative;
+    top : 10px;
+}
+.font_family_input{
+    width : 12rem;
+    height : 1.5rem;
+    margin-right: 0.5rem;
+}
+.font_size_input{
+    height : 1.5rem;
+    width : 4rem;
+}
+.formatting_container_lower{
+    display : flex;
+}
+.bold_italic_underline_container{
+    height : 2rem;
+    display : flex;
+    align-items: center;
+    position: relative;
+    top: 2.5rem;
+    left : -17rem;
+    border-right: 0.1px solid rgb(175, 173, 173);
+}
+
+.bold_italic_underline_container>*{
+    margin-right: 7px;
+}
+
+.alignment_container{
+    height : 2rem;
+    display : flex;
+    position: relative;
+    top : 2.5rem;
+    left : -16rem;
+}
+
+.alignment_container>*{
+    margin-right : 7px;
+}
+
+.icon_container{
+    /* cursor: default; */
+    cursor: pointer;
+    color : rgb(36, 29, 29);
+}
+
+.active{
+    background-color : rgba(136, 134, 134, 0.507);
+}

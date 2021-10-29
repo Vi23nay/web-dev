@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- .menu_bar+.formula_bar+.grid_container+.sheets_container -> easy step -->
+    <div class="menu_bar">
+        <!-- new open save -->
+        <div class="new_open_save_container">
+            <div class="icon_container">
+                <div class="material-icons">note_add</div>
+            </div>
+            <div class="icon_container">
+                <div class="material-icons">file_open</div>
+            </div>
+            <div class="icon_container">
+                <div class="material-icons">save</div>
+            </div>
+
+        </div>
+        <!-- font-family and font-size -->
+        <!-- select -->
+        <div class="main_formatting_container">
+            <div class="formatting_container">
+                <select class = "font_family_input">
+                    <option value="Arial">Arial</option>
+                    <option value="Sans-Serif">sans-serif</option>
+                    <option value="Cursive">Cursive</option>
+                    <option value="serif">serif</option>
+                </select>
+                <select class = "font_size_input">
+                    <option value="14">12</option>
+                    <option value="16">16</option>
+                    <option value="20">20</option>
+                    <option value="24">24</option>
+                    <option value="28">28</option>
+                </select>
+            </div>
+            <div class="formatting_container_lower">
+                <div class="bold_italic_underline_container">
+                    <div class="icon_container bold">
+                        <div class="material-icons">format_bold</div>
+                    </div>
+                    <div class="icon_container italic">
+                        <div class="material-icons">format_italic</div>
+                    </div>
+                    <div class="icon_container underline">
+                        <div class="material-icons">format_underline</div>
+                    </div>
+                </div>
+                <!-- alignment -->
+                <div class="alignment_container">
+                    <div class="icon_container left_align">
+                        <div class="material-icons">format_align_left</div>
+                    </div>
+                    <div class="icon_container center_align">
+                        <div class="material-icons">format_align_center</div>
+                    </div>
+                    <div class="icon_container right_align">
+                        <div class="material-icons">format_align_right</div>
+                    </div>
+                    <div class="icon_container justify">
+                        <div class="material-icons">format_align_justify</div>
+                    </div>
+                </div>
+            </div>
+            <!-- bold italic underline -->
+            
+        </div>
+        
+        <!-- colors  -->
+
+    </div>
+    <div class="formula_bar">
+        <input type="text" class="address_input">
+        <img src="./pngwing.com.png" alt="">
+        <input type="text"class="formula_input">
+
+    </div>
+    <div class="grid_container">
+        <div class="top_left_column">
+            <div class="tlc"></div>
+        </div>
+        <div class="top_row">
+            <!-- static by js -->
+        </div>
+        <div class="left_col"></div>
+        <div class="grid">
+            <!-- 2d grid build -->
+        </div>
+
+        </div>
+    </div>
+    <div class="sheets_container">Sheets container</div>
+    <script src="init.js"></script>
+    <script src="menu.js"></script>
+</body>
+
+</html>
