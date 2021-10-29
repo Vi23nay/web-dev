@@ -5,8 +5,9 @@ let allColors = ['pink', 'blue', 'green', 'black'];
 // let gcColor = "black";//global color
 let defaultColor = "black";
 let cFilter = "";//concept for showing all tasks after filterartion //if double click on same color 
-//elements
 let deleteMode = false;
+// let defaultInitialColor = 'black';
+//elements
 // let input = document.querySelector(".task_input");/
 let mainContainer = document.querySelector(".main-container"); 
 let colorBtns = document.querySelectorAll(".color");
@@ -15,6 +16,7 @@ let plusContainer = document.querySelector(".plus_container");
 let crossContainer = document.querySelector(".multiply_container");
 let lockContainer = document.querySelector(".lock_container");
 let unlockContainer = document.querySelector(".unlock_container");
+
 
 
 
@@ -235,8 +237,8 @@ plusContainer.addEventListener("click", function() {
     plusContainer.classList.add('active');
     crossContainer.classList.remove('active');
     let div = document.createElement("div");
-    div.setAttribute("class", "modal_container");
-    div.innerHTML = `<div class="modal-text_box" contenteditable = "true">Enter your task here</div>
+    div.setAttribute("class", "modal_container shadow");
+    div.innerHTML = `<div class="modal-text_box" contenteditable = "true" >Enter your task here</div>
     <div class="modal-color_box">
         <div class="color_picker pink"></div>
         <div class="color_picker blue"></div>
@@ -244,19 +246,43 @@ plusContainer.addEventListener("click", function() {
         <div class="color_picker black"></div>`
     mainContainer.appendChild(div);
 
-    let modalInputTextBox = document.querySelector(".modal-text_box");
-    modalInputTextBox.addEventListener("keydown", function(e) {
+    //color choosing from modal
+    let colorChooser = document.querySelectorAll(".color_picker");
+    for(let i = 0; i < colorChooser.length; i++){
+        colorChooser[i].addEventListener("click", function() {
+            // console.log(colorChooser[i].classList[1]);
+            defaultColor = colorChooser[i].classList[1];
+            
+            for(let j = 0; j < colorChooser.length; j++){
+                if(colorChooser[j].classList[1] == defaultColor){
+                    colorChooser[j].classList.add("selected");
+                    // colorChooser[j].style.border = "0.2rem solid white";
+                }else{
+                    colorChooser[j].classList.remove("selected");
+                    // colorChooser[j].style.border = "0px";
+                }
+            }
+            
+        })
+    }
+    //entering input and creating tasks
+    let modalContainer = document.querySelector(".modal_container");
+    // let modalInputTextBox = document.querySelector(".modal-text_box");
+        modalContainer.addEventListener("keydown", function(e) {
         // console.log(modalInputTextBox.innerText);
-        if(e.key == "Enter" && modalInputTextBox.innerText.trim() !== "Enter your task here"){
+        let modalInputTextBox = modalContainer.children[0];
+        if(e.key == "Enter" && modalInputTextBox.innerText.trim() !== "Enter your task here" ){
             let id = uid();
-            createTask(id, modalInputTextBox.innerText, true)
+            createTask(id, modalInputTextBox.innerText, true, defaultColor);
+            //hiding of modal
+            mainContainer.removeChild(div);
+            plusContainer.classList.remove('active');
+
         }
-    })
-
-
+    })    
 })
-
-
+    
+////**********************************filtering*************************************////
 function filterCards(filteredColor){
     let allTasks = document.querySelectorAll(".task_header");
     if(cFilter != filteredColor){

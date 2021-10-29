@@ -127,6 +127,9 @@ body{
     /* align-items : center; */
     flex-wrap: wrap;
     padding : 4rem;
+    /* to give gap between each elements -> like margin */
+    gap : 1rem;
+    overflow: auto;
     
 }
 
@@ -135,7 +138,7 @@ body{
     background-color  : rgb(247, 241, 241);
     height : 10rem; 
     width : 15rem;
-    border-radius: 15px;
+    
 } 
 .task_header {
     /* background-color: black; */
@@ -144,7 +147,9 @@ body{
 
 .task_main-container {
     padding : 0.2rem;
-    padding-top: 0.2rem;
+    /* padding-top: 0.2rem; */
+    height : 8rem;
+    
 }
 
 .task_id {
@@ -153,14 +158,20 @@ body{
     /* top, bottom, right, left */
     margin : 0.5rem;
     margin-left : 0px;
+    height : 20%;
 } 
 
 .text {
+    height : 80%;
     font-size : 1.5rem;
+    overflow-y : scroll;
 }
+.text::-webkit-scrollbar {
+    display: none;
+  }
 /* copied from bootstrap*/
 .shadow{
-    box-shadow: 0 1rem 3rem rgba(160, 12, 180, 0.904) !important;
+    box-shadow: 0 1rem 3rem rgb(22, 22, 22) !important;
 }
 
 .active{
@@ -171,9 +182,12 @@ body{
 .modal_container{
     height : 20rem;
     width : 35rem;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     display : flex;
     position: fixed;
+    /* perfectly center */
+    top : calc(50% - 10rem);
+    left : calc(50% - (35/2)rem);
 
 }
 .modal-text_box{
@@ -184,6 +198,7 @@ body{
     font-size : 2rem;
     font-family: gill sans;
     box-sizing: border-box;
+    overflow: auto;
 }
 .modal-color_box{
     /* height : 100%; */
@@ -193,9 +208,22 @@ body{
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    padding : 2rem;
 }
 
 .modal-color_box>*{
     height : 2.5rem;
     width : 5rem;
 }
+
+.selected{
+    border : 0.2rem solid white;
+}
+
+/* for responsiveness */
+@media only screen and (max-width: 600px) {
+    html{
+        font-size : 5px;
+    }
+  }
+  
