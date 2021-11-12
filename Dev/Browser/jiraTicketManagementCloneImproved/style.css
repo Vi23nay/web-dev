@@ -128,7 +128,6 @@ body{
     flex-wrap: wrap;
     padding : 4rem;
     /* to give gap between each elements -> like margin */
-    gap : 1rem;
     overflow: auto;
     
 }
@@ -138,6 +137,7 @@ body{
     background-color  : rgb(247, 241, 241);
     height : 10rem; 
     width : 15rem;
+    gap : 1rem;
     
 } 
 .task_header {
@@ -166,6 +166,7 @@ body{
     font-size : 1.5rem;
     overflow-y : scroll;
 }
+/* to hide scroll bar */
 .text::-webkit-scrollbar {
     display: none;
   }
