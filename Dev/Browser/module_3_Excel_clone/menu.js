@@ -1,18 +1,10 @@
-let fontSizeInput = document.querySelector(".font_size_input");
-let fontFamilyInput = document.querySelector(".font_family_input");
-let bold = document.querySelector(".bold");
-let italic = document.querySelector(".italic");
-let underline = document.querySelector(".underline");
-let leftAlign = document.querySelector(".left_align");
-let centerAlign = document.querySelector(".center_align");
-let rightAlign = document.querySelector(".right_align");
-let justify = document.querySelector(".justify");
 
-let isBold = false;
-let isItalic = false;
-let isUnderline = false;
 
-// changing font size
+// let isBold = false;
+// let isItalic = false;
+// let isUnderline = false;
+
+//**********************************changing font size*******************************
 fontSizeInput.addEventListener("change", function () {
     let fontSize = fontSizeInput.value;
     let cellAddress = addressInput.value;
@@ -21,32 +13,45 @@ fontSizeInput.addEventListener("change", function () {
     let tobeChangedCell = document.querySelector(`.grid .cell[rid='${cellRid}'][cid = '${cellCid}']`);
     // change fontSize property
     tobeChangedCell.style.fontSize = fontSize+"px";
+
+    //database -> update
+    db[cellRid - 1][cellCid.charCodeAt(0) - 65].fontSize = fontSize;
+    // console.log(db);
 })
 
-// changing font fontFamily
+//*******************************changing font fontFamily*********************************
 fontFamilyInput.addEventListener("change", function () {
     let fontFamily = fontFamilyInput.value;
     let cellAddress = addressInput.value;
     //   console.log(cellAddress);
     let { cellCid, cellRid } = getRidCidFromAddress(cellAddress);
     let tobeChangedCell = document.querySelector(`.grid .cell[rid='${cellRid}'][cid = '${cellCid}']`);
-    // change fontSize property
     tobeChangedCell.style.fontFamily = fontFamily;
+
+    //database -> update
+    db[cellRid - 1][cellCid.charCodeAt(0) - 65].fontFamily = fontFamily;
 })
 
+//********************************bold - Italic - Underline**********************************
 bold.addEventListener("click", function() {
     let cellAddress = addressInput.value;
     //   console.log(cellAddress);
     let { cellCid, cellRid } = getRidCidFromAddress(cellAddress);
     let tobeChangedCell = document.querySelector(`.grid .cell[rid='${cellRid}'][cid = '${cellCid}']`);
-    isBold =! isBold;
-    if(isBold == true) {
+
+
+     db[cellRid - 1][cellCid.charCodeAt(0) - 65].isBold != db[cellRid - 1][cellCid.charCodeAt(0) - 65].isBold;
+    // isBold =! isBold;
+    if(db[cellRid - 1][cellCid.charCodeAt(0) - 65].isBold == false) {
         tobeChangedCell.style.fontWeight = 'bold';
         bold.classList.add("active");
+        //database -> update
+        db[cellRid - 1][cellCid.charCodeAt(0) - 65].isBold = true;
     }
     else{
         tobeChangedCell.style.fontWeight = 'normal';
         bold.classList.remove("active");
+        db[cellRid - 1][cellCid.charCodeAt(0) - 65].isBold = false;
     }
     
 })
@@ -55,13 +60,17 @@ italic.addEventListener("click", function() {
     //   console.log(cellAddress);
     let { cellCid, cellRid } = getRidCidFromAddress(cellAddress);
     let tobeChangedCell = document.querySelector(`.grid .cell[rid='${cellRid}'][cid = '${cellCid}']`);
-    isItalic =! isItalic;
-    if(isItalic == true) {
+
+    db[cellRid - 1][cellCid.charCodeAt(0) - 65].isItalic != db[cellRid - 1][cellCid.charCodeAt(0) - 65].isItalic;
+    if(db[cellRid - 1][cellCid.charCodeAt(0) - 65].isItalic == false) {
         tobeChangedCell.style.fontStyle = 'italic';
         italic.classList.add("active");
+        db[cellRid - 1][cellCid.charCodeAt(0) - 65].isItalic = true;
+        
     }else{
         tobeChangedCell.style.fontStyle = 'normal';
         italic.classList.remove("active");
+        db[cellRid - 1][cellCid.charCodeAt(0) - 65].isItalic = false;
     }
 })
 underline.addEventListener("click", function() {
@@ -69,56 +78,68 @@ underline.addEventListener("click", function() {
     //   console.log(cellAddress);
     let { cellCid, cellRid } = getRidCidFromAddress(cellAddress);
     let tobeChangedCell = document.querySelector(`.grid .cell[rid='${cellRid}'][cid = '${cellCid}']`);
-    isUnderline =! isUnderline;
-    if(isUnderline == true) {
+
+    db[cellRid - 1][cellCid.charCodeAt(0) - 65].isUnderline != db[cellRid - 1][cellCid.charCodeAt(0) - 65].isUnderline;
+
+    if(db[cellRid - 1][cellCid.charCodeAt(0) - 65].isUnderline == false) {
         tobeChangedCell.style.textDecoration = 'underline';
         underline.classList.add("active");
+        db[cellRid - 1][cellCid.charCodeAt(0) - 65].isUnderline = true;
     }else{
         tobeChangedCell.style.textDecoration = 'none';
         underline.classList.remove("active");
+        db[cellRid - 1][cellCid.charCodeAt(0) - 65].isUnderline = false;
     }
 })
-leftAlign.addEventListener("click", function() {
-    leftAlign.classList.add("active");
-    centerAlign.classList.remove("active");
-    rightAlign.classList.remove("active");
-    justify.classList.remove("active");
-    let cellAddress = addressInput.value;
-    //   console.log(cellAddress);
-    let { cellCid, cellRid } = getRidCidFromAddress(cellAddress);
-    let tobeChangedCell = document.querySelector(`.grid .cell[rid='${cellRid}'][cid = '${cellCid}']`);
-    tobeChangedCell.style.textAlign = 'left';
+//**********************************Alignments**************************
+//Using bubbling concept
+alignmentContainer.addEventListener("click", function(e){
+    if(e.target !== e.currentTarget){
+        console.log(e.target);
+        let classListArr = e.target.classList;
+        let alignmentTobe = classListArr[0];
+        let cellAddress = addressInput.value;
+        let { cellCid, cellRid } = getRidCidFromAddress(cellAddress);
+        let tobeChangedCell = document.querySelector(`.grid .cell[rid='${cellRid}'][cid = '${cellCid}']`);
+        tobeChangedCell.style.textAlign = alignmentTobe;
+        e.target.classList.add("active");
+        //database -> update
+        db[cellRid - 1][cellCid.charCodeAt(0) - 65].textAlign = alignmentTobe;
+        // console.log(db);
+    }
 })
-centerAlign.addEventListener("click", function() {
-    centerAlign.classList.add("active");
-    leftAlign.classList.remove("active");
-    rightAlign.classList.remove("active");
-    justify.classList.remove("active");
-    let cellAddress = addressInput.value;
-    //   console.log(cellAddress);
-    let { cellCid, cellRid } = getRidCidFromAddress(cellAddress);
-    let tobeChangedCell = document.querySelector(`.grid .cell[rid='${cellRid}'][cid = '${cellCid}']`);
-    tobeChangedCell.style.textAlign = 'center';
+
+//*********************************text color change*******************************
+textColor.addEventListener("click", function(){
+    textColorHidden.click();
 })
-rightAlign.addEventListener("click", function() {
-    rightAlign.classList.add("active");
-    leftAlign.classList.remove("active");
-    centerAlign.classList.remove("active");
-    justify.classList.remove("active");
+textColorHidden.addEventListener("change", function(){
+    let colorValue = textColorHidden.value;
+    console.log(colorValue);
     let cellAddress = addressInput.value;
-    //   console.log(cellAddress);
-    let { cellCid, cellRid } = getRidCidFromAddress(cellAddress);
+    let {cellRid, cellCid} = getRidCidFromAddress(cellAddress);
     let tobeChangedCell = document.querySelector(`.grid .cell[rid='${cellRid}'][cid = '${cellCid}']`);
-    tobeChangedCell.style.textAlign = 'right';
+    tobeChangedCell.style.color = colorValue;
+    
+    // console.log(cellRid)
+    // console.log(cellCid.charCodeAt(0) - 65) -> column no.
+    db[cellRid - 1][cellCid.charCodeAt(0) - 65].color = colorValue;
 })
-justify.addEventListener("click", function() {
-    justify.classList.add("active");
-    leftAlign.classList.remove("active");
-    centerAlign.classList.remove("active");
-    rightAlign.classList.remove("active");
+
+//**************************background color change****************************
+bgColor.addEventListener("click", function(){
+    //clicking hidden object with the help of DOM
+    bgColorHidden.click();
+})
+
+bgColorHidden.addEventListener("change", function(){
+    let colorValue = bgColorHidden.value;
+    console.log(colorValue);
     let cellAddress = addressInput.value;
-    //   console.log(cellAddress);
-    let { cellCid, cellRid } = getRidCidFromAddress(cellAddress);
+    let {cellRid, cellCid} = getRidCidFromAddress(cellAddress);
     let tobeChangedCell = document.querySelector(`.grid .cell[rid='${cellRid}'][cid = '${cellCid}']`);
-    tobeChangedCell.style.textAlign = 'justify';
+    tobeChangedCell.style.backgroundColor = colorValue;
+    //db -> update
+    db[cellRid - 1][cellCid.charCodeAt(0) - 65].backgroundColor = colorValue;
+    // console.log(db);
 })

@@ -1,3 +1,14 @@
+let fontSizeInput = document.querySelector(".font_size_input");
+let fontFamilyInput = document.querySelector(".font_family_input");
+let bold = document.querySelector(".bold");
+let italic = document.querySelector(".italic");
+let underline = document.querySelector(".underline");
+let alignmentContainer = document.querySelector(".alignment_container");
+let alignmentContainerElements = document.querySelectorAll(".alignment_container .material-icons");
+let textColor = document.querySelector(".textColorMain");
+let textColorHidden = document.querySelector(".textColorH");
+let bgColor = document.querySelector(".bgColorMain");
+let bgColorHidden = document.querySelector(".backgroundColorH");
 let topRow = document.querySelector(".top_row");
 let grid = document.querySelector(".grid");
 let addressInput = document.querySelector(".address_input");
@@ -19,7 +30,7 @@ for (let i = 1; i <= 100; i++) {
 }
 
 //grid creation-> 2d array
-for(let i = 1; i <= 100; i++){
+for(let i = 0; i < 100; i++){
     let row = document.createElement("div");
     row.setAttribute("class", "row");
     for(let j = 0; j < 26; j++){
@@ -27,7 +38,8 @@ for(let i = 1; i <= 100; i++){
         div.setAttribute("class", "cell");
         // div.contentEditable = true;also work
         div.setAttribute("contentEditable", "true");
-        div.setAttribute("rID", i);
+        // for every cell identification
+        div.setAttribute("rID", i+1);
         div.setAttribute("cID", String.fromCharCode(65 + j));
         // div.innerText = String.fromCharCode(65 + j) + i;
         row.appendChild(div);
@@ -46,6 +58,28 @@ for(let i = 1; i <= 100; i++){
     }
     grid.appendChild(row);
 }
+/***************************Database********************************/ 
+let db = [];
+for(let i = 0; i < 100; i++){
+    let rowArr = [];
+    for(let j = 0; j < 26; j++){
+        let cellObject = {
+            value : "",
+            color : "black",
+            backgroundColor : "black",
+            fontSize : 12,
+            fontFamily : "Arial",
+            textAlign : "left",
+            isItalic : false,
+            isUnderline : false,
+            isBold : false,
+        }
+        rowArr.push(cellObject);
+    }
+    db.push(rowArr);
+}
+
+
 //##to get row and column of selected cell in addressInput;
 // if i click on any of the cells
 // then i will get the address
@@ -67,6 +101,38 @@ for(let i = 0; i < AllGridCells.length; i++){
         addressInput.value = colId + rowId;
         let  cCell = AllGridCells[i];
         cCell.style.border = "2px solid blue";//giving outline to current cell
+
+        db[rowId - 1][colId.charCodeAt(0) - 65].value = AllGridCells[i].innerText;
+
+        //*****************************************2 WAY BINDING********************************
+        // let address = addressInput.value;
+        // let {cellCid, cellRid} = getRidCidFromAddress(address);
+        // let cell = db[cellRid - 1][cellCid];
+        // console.log(db[cellRid - 1][cellCid.charCodeAt(0) - 65]);
+
+        let cellobj = db[rowId - 1][colId.charCodeAt(0) - 65];
+        fontSizeInput.value = cellobj.fontSize
+
+        fontFamilyInput.value = cellobj.fontFamily;
+
+        cellobj.isBold == true ? bold.classList.add("active") : bold.classList.remove("active");
+        cellobj.isItalic == true ? italic.classList.add("active") : italic.classList.remove("active");
+        cellobj.isUnderline == true ? underline.classList.add("active") : underline.classList.remove("active");
+
+        textColor.style.color = cellobj.color;
+        bgColor.style.color = cellobj.backgroundColor;
+
+        let alignment = cellobj.textAlign;
+        for(let i = 0; i < alignmentContainerElements.length; i++){
+            alignmentContainerElements[i].classList.remove("active");
+        }
+
+        for(let i = 0; i < alignmentContainerElements.length; i++){
+            if(alignmentContainerElements[i].classList.contains(alignment)){
+                alignmentContainerElements[i].classList.add("active");
+            }
+        }
+
     })
 }
 

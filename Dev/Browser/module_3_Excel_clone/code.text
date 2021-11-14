@@ -1,0 +1,113 @@
+<div class="menu_bar">
+        <!-- new open save -->
+        <div class="new_open_save_container">
+            <div class="icon_container">
+                <div class="material-icons">note_add</div>
+            </div>
+            <div class="icon_container">
+                <div class="material-icons">file_open</div>
+            </div>
+            <div class="icon_container">
+                <div class="material-icons">save</div>
+            </div>
+
+        </div>
+        <!-- font-family and font-size -->
+        <!-- select -->
+        <div class="main_formatting_container">
+            <div class="formatting_container">
+                <select class = "font_family_input">
+                    <option value="Arial">Arial</option>
+                    <option value="Sans-Serif">sans-serif</option>
+                    <option value="Cursive">Cursive</option>
+                    <option value="serif">serif</option>
+                </select>
+                <select class = "font_size_input">
+                    <option value="14">12</option>
+                    <option value="16">16</option>
+                    <option value="20">20</option>
+                    <option value="24">24</option>
+                    <option value="28">28</option>
+                </select>
+            <!-- </div> -->
+            <!-- <div class="formatting_container_lower"> -->
+                <div class="bold_italic_underline_container">
+                    <div class="icon_container bold">
+                        <div class="material-icons">format_bold</div>
+                    </div>
+                    <div class="icon_container italic">
+                        <div class="material-icons">format_italic</div>
+                    </div>
+                    <div class="icon_container underline">
+                        <div class="material-icons">format_underline</div>
+                    </div>
+                </div>
+                <!-- alignment -->
+                <div class="alignment_container">
+                    <div class="left material-icons">format_align_left</div>
+                    <div class="center material-icons">format_align_center</div>
+                    <div class="right material-icons">format_align_right</div>
+                    <div class="justify material-icons">format_align_justify</div>
+                   
+                </div>
+            </div>
+            <!-- colors  -->
+            <div class="color_container">
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+//////Extra alignmnets code -> ordinary way////////////////////////////////
+
+// leftAlign.addEventListener("click", function() {
+//     leftAlign.classList.add("active");
+//     centerAlign.classList.remove("active");
+//     rightAlign.classList.remove("active");
+//     justify.classList.remove("active");
+//     let cellAddress = addressInput.value;
+//     //   console.log(cellAddress);
+//     let { cellCid, cellRid } = getRidCidFromAddress(cellAddress);
+//     let tobeChangedCell = document.querySelector(`.grid .cell[rid='${cellRid}'][cid = '${cellCid}']`);
+//     tobeChangedCell.style.textAlign = 'left';
+// })
+// centerAlign.addEventListener("click", function() {
+//     centerAlign.classList.add("active");
+//     leftAlign.classList.remove("active");
+//     rightAlign.classList.remove("active");
+//     justify.classList.remove("active");
+//     let cellAddress = addressInput.value;
+//     //   console.log(cellAddress);
+//     let { cellCid, cellRid } = getRidCidFromAddress(cellAddress);
+//     let tobeChangedCell = document.querySelector(`.grid .cell[rid='${cellRid}'][cid = '${cellCid}']`);
+//     tobeChangedCell.style.textAlign = 'center';
+// })
+// rightAlign.addEventListener("click", function() {
+//     rightAlign.classList.add("active");
+//     leftAlign.classList.remove("active");
+//     centerAlign.classList.remove("active");
+//     justify.classList.remove("active");
+//     let cellAddress = addressInput.value;
+//     //   console.log(cellAddress);
+//     let { cellCid, cellRid } = getRidCidFromAddress(cellAddress);
+//     let tobeChangedCell = document.querySelector(`.grid .cell[rid='${cellRid}'][cid = '${cellCid}']`);
+//     tobeChangedCell.style.textAlign = 'right';
+// })
+// justify.addEventListener("click", function() {
+//     justify.classList.add("active");
+//     leftAlign.classList.remove("active");
+//     centerAlign.classList.remove("active");
+//     rightAlign.classList.remove("active");
+//     let cellAddress = addressInput.value;
+//     //   console.log(cellAddress);
+//     let { cellCid, cellRid } = getRidCidFromAddress(cellAddress);
+//     let tobeChangedCell = document.querySelector(`.grid .cell[rid='${cellRid}'][cid = '${cellCid}']`);
+//     tobeChangedCell.style.textAlign = 'justify';
+// })

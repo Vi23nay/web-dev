@@ -7,8 +7,9 @@ body {
     margin: 0px;
 }
 .menu_bar {
-    height: 5rem;
+    height: 3rem;
     background-color: rgba(27, 70, 27, 0.849);
+    display: flex;
 }
 
 .formula_bar {
@@ -20,6 +21,76 @@ body {
     height: 2.5rem;
     background-color: rgb(218, 209, 209);
 }
+
+/* ****************************MENU BAR********************** */
+
+.menu_bar>*{
+    padding : 0.5rem;
+    border-right: 1px solid rgb(148, 129, 129);
+    display: flex;
+    justify-content:space-evenly;
+    min-width: 17%;
+}
+.material-icons,.material-icons-outlined{
+    cursor: pointer;
+    font-size: 2rem;
+}
+/* select{
+    margin-left : 1rem;
+    border:0px;
+    outline:0px;
+    background-color:  rgba(22, 66, 22, 0.849);
+    color : white;
+ } */
+.font_family_input{
+    height : 1.5rem;
+    width : 70%;
+}
+.font_size_input{
+    height : 1.5rem;
+    width : 30%;
+}
+.alignment_container{
+    min-width:25%;
+}
+
+.textColorH{
+    width : 1px;
+}
+.backgroundColorH{
+    
+    width : 1px;
+}
+
+
+/********************** FORMULA BAR************* */
+.formula_bar{
+    display : flex;
+    align-items: center;
+    /* justify-content: center; */
+}
+/* giving margin to : */
+.formula_bar>input{
+    margin-left: 1rem;
+    margin-right: 1rem;
+    border : none;
+}
+.formula_bar>*{
+    height : 70%;
+}
+.address_input{
+    width : 4rem;
+    margin-left: 1rem;
+    text-align : center;
+}
+.formula_bar>img{
+    opacity : 0.5;
+}
+.formula_input{
+    width : calc(100vw - 8rem);
+}
+
+
 
 
 /********************** GRID CONTAINER**************** */
@@ -92,105 +163,7 @@ body {
     left : 2rem
 }
 
-
-/********************** FORMULA BAR************* */
-.formula_bar{
-    display : flex;
-    align-items: center;
-    /* justify-content: center; */
-}
-/* giving margin to : */
-.formula_bar>input{
-    margin-left: 1rem;
-    margin-right: 1rem;
-    border : none;
-}
-.formula_bar>*{
-    height : 70%;
-}
-.address_input{
-    width : 4rem;
-    margin-left: 1rem;
-    text-align : center;
-}
-.formula_bar>img{
-    opacity : 0.5;
-}
-.formula_input{
-    width : calc(100vw - 8rem);
-}
-
-/*******************************Menu bar***************************/
-.menu_bar{
-    display : flex;
-}
-.new_open_save_container{
-    display : flex;
-    align-items: center;
-    border-right: 0.1px solid rgb(175, 173, 173);
-}
-.new_open_save_container>*{
-    padding: 1rem;
-}
-
-.material-icons{
-    font-size : 2rem;
-}
-.main_formatting_container{
-    display : flex;
-    width : 19rem;
-    border-right: 0.1px solid rgb(175, 173, 173);
-}
-.formatting_container{
-    display : flex;
-    margin-left: 1rem;
-    position: relative;
-    top : 10px;
-}
-.font_family_input{
-    width : 12rem;
-    height : 1.5rem;
-    margin-right: 0.5rem;
-}
-.font_size_input{
-    height : 1.5rem;
-    width : 4rem;
-}
-.formatting_container_lower{
-    display : flex;
-}
-.bold_italic_underline_container{
-    height : 2rem;
-    display : flex;
-    align-items: center;
-    position: relative;
-    top: 2.5rem;
-    left : -17rem;
-    border-right: 0.1px solid rgb(175, 173, 173);
-}
-
-.bold_italic_underline_container>*{
-    margin-right: 7px;
-}
-
-.alignment_container{
-    height : 2rem;
-    display : flex;
-    position: relative;
-    top : 2.5rem;
-    left : -16rem;
-}
-
-.alignment_container>*{
-    margin-right : 7px;
-}
-
-.icon_container{
-    /* cursor: default; */
-    cursor: pointer;
-    color : rgb(36, 29, 29);
-}
-
 .active{
     background-color : rgba(136, 134, 134, 0.507);
+    /* box-shadow: 0 1rem 3rem rgba(22, 22, 22, 0.637) !important; */
 }
