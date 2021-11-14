@@ -226,7 +226,7 @@ body{
 /* for responsiveness */
 @media only screen and (max-width: 600px) {
     html{
-        font-size : 5px;
+        font-size : 10px;
     }
   }
   
