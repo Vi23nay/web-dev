@@ -1,9 +1,3 @@
-
-
-// let isBold = false;
-// let isItalic = false;
-// let isUnderline = false;
-
 //**********************************changing font size*******************************
 fontSizeInput.addEventListener("change", function () {
     let fontSize = fontSizeInput.value;

@@ -7,16 +7,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        /* custom height */
+        /* heght provide -> element willl take that much amount of height  */
+        /* if content is more than provided height -> then overflow case */
         div {
             height: 200px;
             background-color: lightgreen;
-            overflow: auto;
+        /* by default overflow -> visible */
+       /* DECIDE WHETHER TO APPLY SCROLL BAR IN RIGHT OR BOTTOM DIRECTION ON IT'S OWN */
+            /* overflow: auto; */
+
+            /* SCROLL BAR IN BOTH DIRECTIONS  */
+            overflow: scroll;
+            
+            /* overflow: hidden; */
+            /* overflow: visible; */
+            /* overflow-x: scroll; */
+            /* overflow-y: scroll; */
+
             font-size: 2rem;
         }
     </style>
 </head>
 
 <body>
+    <!-- html content ki default height -> content height -->
+    <!-- we can changle styling also by giving height in style -->
     <div>Hello Lorem ipsum dolor sit amet consectetur adipisicing elit. At iusto ipsam sint porro doloremque maiores.
         Magni quas labore a eligendi possimus ullam architecto unde qui, illum doloribus harum reprehenderit iusto
         magnam quidem molestiae. Hic dicta enim, molestiae dolorum reiciendis beatae non id fugiat voluptatibus cum

@@ -105,11 +105,7 @@ for(let i = 0; i < AllGridCells.length; i++){
         db[rowId - 1][colId.charCodeAt(0) - 65].value = AllGridCells[i].innerText;
 
         //*****************************************2 WAY BINDING********************************
-        // let address = addressInput.value;
-        // let {cellCid, cellRid} = getRidCidFromAddress(address);
-        // let cell = db[cellRid - 1][cellCid];
-        // console.log(db[cellRid - 1][cellCid.charCodeAt(0) - 65]);
-
+        
         let cellobj = db[rowId - 1][colId.charCodeAt(0) - 65];
         fontSizeInput.value = cellobj.fontSize
 

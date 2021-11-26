@@ -8,7 +8,7 @@ body {
 }
 .menu_bar {
     height: 3rem;
-    background-color: rgba(27, 70, 27, 0.849);
+    background-color: rgba(26, 82, 24, 0.849);
     display: flex;
 }
 
@@ -18,7 +18,7 @@ body {
 }
 
 .sheets_container {
-    height: 2.5rem;
+    height: 4.4rem;
     background-color: rgb(218, 209, 209);
 }
 
@@ -29,8 +29,8 @@ body {
     border-right: 1px solid rgb(148, 129, 129);
     display: flex;
     justify-content:space-evenly;
-    min-width: 17%;
 }
+
 .material-icons,.material-icons-outlined{
     cursor: pointer;
     font-size: 2rem;
@@ -41,7 +41,16 @@ body {
     outline:0px;
     background-color:  rgba(22, 66, 22, 0.849);
     color : white;
- } */
+} */
+.nos_container, .biu_container, .font-family_container{
+    min-width: 18%;
+}
+.alignment_container{
+    min-width:25%;
+}
+.color_container{
+    min-width: 21%;
+}
 .font_family_input{
     height : 1.5rem;
     width : 70%;
@@ -50,15 +59,12 @@ body {
     height : 1.5rem;
     width : 30%;
 }
-.alignment_container{
-    min-width:25%;
-}
+
 
 .textColorH{
     width : 1px;
 }
 .backgroundColorH{
-    
     width : 1px;
 }
 
@@ -167,3 +173,9 @@ body {
     background-color : rgba(136, 134, 134, 0.507);
     /* box-shadow: 0 1rem 3rem rgba(22, 22, 22, 0.637) !important; */
 }
+
+/* @media only screen and (max-width: 600px) {
+    html {
+        font-size : 10px;
+     } 
+  }  */

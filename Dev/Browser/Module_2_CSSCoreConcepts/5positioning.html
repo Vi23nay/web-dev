@@ -70,7 +70,7 @@
             margin-bottom: 3rem;
             padding : 2rem;
             /* now two's position w.r.t grand-parent */
-            position: relative;
+            position:relative;
         }
         .parent-absolute {
             /* if i want to change two's position w.r.t parent-absolute and not w.r.t page then i have to apply position : relative in parent*/
@@ -85,12 +85,50 @@
             top : 10px;
             left:20px;
         }
-    </style>
+
+        .parent-fixed{
+            height : 40rem;
+            width : 20rem;
+            border : 2px solid white;
+            margin-left: 1rem;
+            margin-bottom: 3rem;
+        }
+        .parent-fixed>.child{
+            /* it remains fixed with respect to the page */
+            position: fixed;
+            left : 200px;
+            top : 20px;
+        }
+        .parent-sticky{
+            height : 40rem;
+            width : 20rem;
+            border : 2px solid white;
+            margin-left: 1rem;
+            margin-bottom: 3rem;
+        }
+        .parent-sticky>.one{
+            /* it act as a normal elemnent until a threshold is reached */
+            position:sticky;
+            top: 0px;
+            left : 0px;
+        }
+        </style>
 </head>
 
 <body>
+    <!-- by default -> posirion : static -->
+    <!-- normal flow -->
+    <!-- order wise -->
+    <!-- ui element order html ->
+    it will print in the same order  -->
     <h1>POSITIONING</h1>
-    <div class="parent">
+    <div class="parent-fixed">
+        <div class="child one">fixed</div>
+    </div>
+    <div class="parent-sticky">
+        <div class="child one">sticky</div>
+    </div>
+    <div class="parent relativee">
         <div class="child one">1</div>
         <div class="child two">2</div>
         <div class="child three">3</div>
@@ -101,17 +139,17 @@
             <div class="child two">2ABS</div>
             <div class="child three">3</div>
             <div class="child four">4</div>
+        </div>
     </div>
 
-    </div>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere natus architecto mollitia dolorem illo
+    <!-- <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere natus architecto mollitia dolorem illo
         repudiandae, magnam doloremque tenetur fuga. Nemo dolores necessitatibus ipsam inventore? Accusamus maxime, sunt
         aperiam culpa exercitationem quod modi ullam magni deleniti adipisci quasi in! Minima tempore corrupti
         assumenda, explicabo similique qui? Voluptatibus ducimus ex tenetur veniam dolorem, aperiam fugiat magni, iusto
         maxime sed architecto laborum minima cupiditate officiis maiores quisquam corporis quae quod, velit nulla quis
         itaque. Temporibus nam, perspiciatis nulla, corporis, ducimus accusantium ullam exercitationem fugiat corrupti
         vel officia. Reprehenderit est quidem magni sequi, debitis saepe adipisci dicta expedita optio dignissimos odio
-        ea quis commodi!</p>
+        ea quis commodi!</p> -->
 </body>
 
 </html>

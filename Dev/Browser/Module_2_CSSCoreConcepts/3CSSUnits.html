@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        /* 1rem is relative to html font size */
+        /* 1rem is relative to html font size(by default 16px) */
         /* responsive design -> device and layout -> change*/ */
         /* default 1rem -> 16px */
         html{
@@ -15,6 +15,9 @@
         body{
             margin : 0px;
             background-color : rgb(207, 207, 102);
+        }
+        body>*{
+            border-bottom: 5px solid black;;
         }
         .box{
             height : 160px;
@@ -32,9 +35,6 @@
 
         .two{
             background-color : lightpink;
-        }
-        body>*{
-            border-bottom: 5px solid black;;
         }
         /* rem -> relative unit(calculate) */
         /* default 1rem = 16px; */
