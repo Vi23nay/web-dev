@@ -96,7 +96,11 @@ alignmentContainer.addEventListener("click", function(e){
         let { cellCid, cellRid } = getRidCidFromAddress(cellAddress);
         let tobeChangedCell = document.querySelector(`.grid .cell[rid='${cellRid}'][cid = '${cellCid}']`);
         tobeChangedCell.style.textAlign = alignmentTobe;
-        e.target.classList.add("active");
+        let alignments = alignmentContainer.children;
+        for(let i = 0 ; i < alignments.length; i++){
+                alignments[i].classList.remove("active");
+        }
+        e.target.classList.add("active"); 
         //database -> update
         db[cellRid - 1][cellCid.charCodeAt(0) - 65].textAlign = alignmentTobe;
         // console.log(db);

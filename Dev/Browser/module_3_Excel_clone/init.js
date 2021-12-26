@@ -64,10 +64,10 @@ for(let i = 0; i < 100; i++){
     let rowArr = [];
     for(let j = 0; j < 26; j++){
         let cellObject = {
-            value : "",
+            content : "",
             color : "black",
-            backgroundColor : "black",
-            fontSize : 12,
+            backgroundColor : "white",
+            fontSize : 14,
             fontFamily : "Arial",
             textAlign : "left",
             isItalic : false,
@@ -102,7 +102,7 @@ for(let i = 0; i < AllGridCells.length; i++){
         let  cCell = AllGridCells[i];
         cCell.style.border = "2px solid blue";//giving outline to current cell
 
-        db[rowId - 1][colId.charCodeAt(0) - 65].value = AllGridCells[i].innerText;
+        // db[rowId - 1][colId.charCodeAt(0) - 65].content = AllGridCells[i].innerText;
 
         //*****************************************2 WAY BINDING********************************
         
@@ -149,4 +149,3 @@ function getRidCidFromAddress(address){
     let cId = address.substring(0,1);
     return {cellCid:cId, cellRid:rId};
 }
-
