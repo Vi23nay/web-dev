@@ -172,7 +172,6 @@ body {
     top : 1.5rem;
     left : 2rem
 }
-
 .active{
     background-color : rgba(136, 134, 134, 0.507);
     /* box-shadow: 0 1rem 3rem rgba(22, 22, 22, 0.637) !important; */
