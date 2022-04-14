@@ -1,3 +1,4 @@
+//import
 import React from 'react';
 
 //children
@@ -21,4 +22,5 @@ function PrintMyName(props){
     )
   }
 
+  //export
   export default PrintNames;

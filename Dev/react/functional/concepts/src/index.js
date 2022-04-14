@@ -26,12 +26,13 @@ import PrintNames from './PrintNames'
 //code read -> bottom to top
 //dom render -> content print -> html root -> id -> content
 ReactDOM.render(
-  // <>
-  // <h1>Hello React1!</h1>
-  // <h1>Hello React2!</h1>
-  // <h1>Hello React3!</h1>
-  // </>
-  <PrintNames></PrintNames>
+  <>
+  <h1>Hello React1!</h1>
+  <h1>Hello React2!</h1>
+  <h1>Hello React3!</h1>
+  </>
+
+  // <PrintNames></PrintNames>
   ,
   document.getElementById('root')
 );

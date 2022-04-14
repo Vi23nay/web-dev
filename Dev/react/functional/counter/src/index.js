@@ -2,8 +2,10 @@ import React,{ useState } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import CounterFn from './CounterFn'
+import CounterClass from './CounterClass'
 ReactDOM.render(
   <CounterFn></CounterFn>
+  // <CounterClass></CounterClass>
   ,
   document.getElementById('root')
 );
