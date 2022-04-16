@@ -17,30 +17,28 @@
     <div id="root"></div>
     <!-- to convert jsx -> js -->
     <script type="text/babel">
-        // function name start with capital letter
-
-        // react code
-        // JSX -> html + js
-        // COMPONENT
-        function Hello(){
-            // curly braces ka use krke kisi b html text ke endar dynamic behaviour add kar skte hai
-            return <h1>Hello React</h1>
-        }
-
-        function Hellos(){
+        function Counter(){
+            // jo bhi data change karna h -> react.useState(initital value of that data) -> return
+            //variable -> data, function is also given that will change the variable i.e. (Changecount) 
+            
+            //count -> variable
+            //changeCount -> funciton for changing count values
+            let [count, changeCount] = React.useState(0);
+            let increment = () =>{
+                changeCount(count + 1);
+            }
+            let decrement = () =>{
+                changeCount(count - 1);
+            }
             return(
                 <div>
-                    <Hello></Hello>
-                    <Hello></Hello>
-                    <Hello></Hello>
-                    <Hello></Hello>
-                    <Hello></Hello>
-                </div>
+                <button onClick={increment}>+</button>
+                <p>Count: {count}</p>
+                <button onClick={decrement}>-</button>
+                    </div>
             )
         }
-        // get html from Hello component and put it inside root
-        ReactDOM.render(<Hellos></Hellos>, document.querySelector("#root"));
-        //code read -> bottom to top
+        ReactDOM.render(<Counter></Counter>, document.querySelector("#root"));
     </script>
 </body>
 </html>

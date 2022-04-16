@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- reaact is a UI manipulation (logic) library -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <!-- react dom -> manipulate changes in webpage with the help of react library -->
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <!-- to convert jsx -> js -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <!-- To bring data from somewhere else -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"></script>
+</head>
+
+<body>
+    <!-- everything will be put in root -->
+    <div id="root"></div>
+    <!-- to convert jsx -> js -->
+    <script type="text/babel">
+        let useEffect = React.useEffect;
+        function DelayedLoading() {
+            let [data, setData] = React.useState("");
+            // 1
+            console.log("Before");
+            //useEffect code will run only after before code runs
+            //is will run the fn when th ui is printed
+            //3
+            useEffect(async function () {
+                console.log("After in useEffect");
+                //data
+                //authentication
+                //time taking process is done here
+                let resp = await axios.get("https://jsonplaceholder.typicode.com/todos/1");
+                let respData = resp.data;
+                console.log(respData);
+                setData(JSON.stringify(respData));
+
+            },[]);
+
+            // 2
+            return (<div>
+                    <h1>Delayed Loading Example</h1>
+                    {data == "" ? <p>loading...</p> : <p>{data}</p>}
+                </div>)
+        }
+        ReactDOM.render(<DelayedLoading></DelayedLoading>, document.querySelector("#root"));
+    </script>
+</body>
+
+</html>

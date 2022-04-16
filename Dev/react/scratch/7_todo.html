@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- reaact is a UI manipulation (logic) library -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <!-- react dom -> manipulate changes in webpage with the help of react library -->
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <!-- to convert jsx -> js -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <!-- to bring data from somewhere else -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"></script>
+</head>
+
+<body>
+    <!-- everything will be put in root -->
+    <div id="root"></div>
+    <!-- to convert jsx -> js -->
+    <script type="text/babel">
+        function InputBox(){
+            let [cValue, setValue] = React.useState("");
+            const setInputData = function(e){
+                setValue(e.target.value);
+            }
+            return (<div>
+                <input type="text" value={cValue} onChange={setInputData}/>
+                <button>Add Task</button>
+            </div>)
+        }
+
+        function ListItems(){
+            let [tasks, updateTasks] = React.useState([]);
+            //data -> html convert (array data) -> use map (not loop)
+            return (
+                <ul>
+                {
+                    tasks.map(task => <li>{task}</li>)
+                }
+                </ul>)
+        }
+        function Todo(){
+            return <div>
+                <h1>Todo app</h1>
+                <InputBox></InputBox>
+                <ListItems></ListItems>
+                </div>
+        }
+        
+        ReactDOM.render(<Todo></Todo>, document.querySelector("#root"));
+    </script>
+</body>
+
+</html>

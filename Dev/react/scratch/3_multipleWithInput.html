@@ -22,19 +22,22 @@
         // react code
         // JSX -> html + js
         // COMPONENT
-        function Hello(){
+        function Hello(props){
+            //props -> obj
+            let name = props.name;
             // curly braces ka use krke kisi b html text ke endar dynamic behaviour add kar skte hai
-            return <h1>Hello React</h1>
+            return <h1>Hello React {name} and age is {props.age}</h1>
+            // return <h1>Hello React{Math.random()}</h1>
         }
 
         function Hellos(){
+            // parameters to a component
             return(
                 <div>
-                    <Hello></Hello>
-                    <Hello></Hello>
-                    <Hello></Hello>
-                    <Hello></Hello>
-                    <Hello></Hello>
+                    <Hello name="A" age={20}></Hello>
+                    <Hello name="B" age="21"></Hello>
+                    <Hello name="C" age="22"></Hello>
+                    <Hello name="D"></Hello>
                 </div>
             )
         }
