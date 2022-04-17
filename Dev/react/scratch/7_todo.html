@@ -21,33 +21,64 @@
     <div id="root"></div>
     <!-- to convert jsx -> js -->
     <script type="text/babel">
-        function InputBox(){
+        function InputBox(props){
             let [cValue, setValue] = React.useState("");
             const setInputData = function(e){
+                // console.log(e.target.value);
                 setValue(e.target.value);
             }
+
+            const addTask = () =>{
+                console.log(`current task : ${cValue}` );
+                props.parentGetTask(cValue);
+                // setValue("");
+            }
+            // controlled components -> input
+            //input manages the visible data but
+            //react treats it as bad practice -> 
+            // you should always do the UI changes 
+            // with state variables.
             return (<div>
                 <input type="text" value={cValue} onChange={setInputData}/>
-                <button>Add Task</button>
+                <button onClick={addTask}>Add Task</button>
             </div>)
         }
 
-        function ListItems(){
-            let [tasks, updateTasks] = React.useState([]);
+        function ListItems(props){
+            // let [tasks, updateTasks] = React.useState([]);
             //data -> html convert (array data) -> use map (not loop)
+            let tasks = props.tasks;
             return (
                 <ul>
-                {
-                    tasks.map(task => <li>{task}</li>)
+                    {
+                        // unique id -> otherwise thoda sa error
+                        tasks.map((task,idx) => <li key={idx}>{task}</li>)
+                    }
+                    </ul>)
                 }
-                </ul>)
-        }
         function Todo(){
-            return <div>
+            //lifting the stateup(listItems ki state parent(todo) apne pass hi rakhega)
+            let [tasks, updateTasks] = React.useState([]);
+            
+            const getTask = (currentTask) => {
+                console.log("In todo component: " + currentTask);
+                // 1
+                // let newTasksArr = [];
+                // for(let i = 0; i < tasks.length; i++){
+                    //     newTasksArr.push(arr[i]);
+                    // }
+                // 2
+                let newTasksArr = [...tasks];//deep copy
+                newTasksArr.push(currentTask);
+                updateTasks(newTasksArr);
+                //state ka variable change
+            }
+            //components render with new props
+            return (<div>
                 <h1>Todo app</h1>
-                <InputBox></InputBox>
-                <ListItems></ListItems>
-                </div>
+                <InputBox parentGetTask = {getTask}></InputBox>
+                <ListItems tasks = {tasks}></ListItems>
+            </div>)
         }
         
         ReactDOM.render(<Todo></Todo>, document.querySelector("#root"));
