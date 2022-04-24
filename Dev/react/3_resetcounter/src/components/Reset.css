@@ -1,0 +1,10 @@
+.reset-container{
+    font-weight : bold;
+    padding: 10px;
+    border-bottom : 2px solid gray;
+    display: flex;
+}
+
+.reset-container>*{
+    margin : 5px;
+}

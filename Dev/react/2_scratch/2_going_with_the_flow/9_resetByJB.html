@@ -1,0 +1,153 @@
+<!-- THIS WAY IS NOT USED IN COMPANIES -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document<1/title>
+    <!-- reaact is a UI manipulation (logic) library -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <!-- react dom -> manipulate changes in webpage with the help of react library -->
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <!-- to convert jsx -> js -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <!-- to bring data from somewhere else -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"></script>
+
+    <style>
+        .border{
+            border-top : 5px solid gray;
+            margin-bottom : 10px;
+        }
+        /* .border-small{
+            border : 1px solid gray;
+        } */
+        .counter{
+            display: flex;
+        }
+        .counter>*{
+            border : 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+//sibling-1 and child of reset counter
+    function ResetBoxes(props){
+        let [counterValue, updateCounter] = React.useState("");
+        let[resetValue, updateReset] = React.useState("");
+
+        let getResetAndCounterValues = props.getResetAndCounterValues;//function from parent(to passvalues to parent)
+
+        const setCounterNumber = (e) => {
+            // console.log(e.target.value);
+            updateCounter(e.target.value);
+        }
+                
+        const setResetNumber = (e) => {
+            // console.log(e.target.value);
+            updateReset(e.target.value);
+        }
+
+        const resetCounter = () =>{
+            // console.log(resetValue);
+            // console.log(counterValue);
+            getResetAndCounterValues(counterValue, resetValue);
+        }
+        return(
+            <div>
+                <span>Counter Number : </span>
+                <input type="text" value = {counterValue} onChange={setCounterNumber}/>
+                <span>  Reset by value : </span>
+                <input type="text" value = {resetValue} onChange={setResetNumber}/>
+                <button onClick={resetCounter}>Reset</button>
+                <h1></h1>
+                </div>
+                )
+    }
+
+    //child for multiple counters
+    function Counter(props){
+        let [count, updateCount] = React.useState(0);
+        let number = props.number;
+
+        //coming from parent function
+        let resetParentProps = props.resetParentProps;  
+
+        if(number == props.counterValue//if it is alone -> infinite loop(infinite renders)
+         && count != props.resetValue){//we need to reset props otherwise value change n ho paegi(baar baar same value update ho jaegi jo resetVAlue m padi h)
+            // console.log(props.counterValue);
+            // console.log(props.resetValue);
+            updateCount(Number(props.resetValue));
+            //resetting props
+            resetParentProps(); 
+
+
+        }
+        
+        const increment = ()=>{
+            updateCount(count + 1);
+        }
+        const decrement = ()=>{
+            updateCount(count - 1);
+        }
+
+        return (
+            <div>
+                <h3>Counter Number : {props.number}</h3>
+                <button onClick={increment}>+</button>
+                <p className="font-size"> Count : {count} </p>
+                <button onClick={decrement}>-</button>
+                </div>
+        )
+    }
+                
+//sibling-2 and child of reset counter
+    function MultipleCounters(props){
+        let counterValue = props.counterValue;
+        let resetValue = props.resetValue;
+        let resetParentProps = props.resetParentProps;
+        return(
+            <div className="counter">
+                <Counter number={1} resetParentProps={resetParentProps} counterValue={counterValue} resetValue={resetValue}></Counter>
+                <Counter number={2} resetParentProps={resetParentProps} counterValue={counterValue} resetValue={resetValue}></Counter>
+                <Counter number={3} resetParentProps={resetParentProps} counterValue={counterValue} resetValue={resetValue}></Counter>
+                </div>
+        )
+    }
+
+    //**********************************parent********************************//
+    function ResetCounters(){
+        //to pass from parent to child(counters);
+        let [counterValue, updateCounter] = React.useState("");
+        let[resetValue, updateReset] = React.useState("");
+
+        //get reset and counter value from resetBoxes child
+        function getResetAndCounterValues(counterValue, resetValue){
+            // console.log("counterValue : " + counterValue + "resetValue : " + resetValue);
+            updateCounter(counterValue);
+            updateReset(resetValue);
+        }
+        function resetParentProps(){
+            updateCounter("");
+            updateReset("");
+        }
+        return(
+            <div>
+                <h1>Reset Activity</h1>
+                <div className="border"></div>
+                <ResetBoxes getResetAndCounterValues={getResetAndCounterValues}></ResetBoxes>
+                <div className="border"></div>
+                <MultipleCounters resetParentProps = {resetParentProps} counterValue={counterValue} resetValue={resetValue}></MultipleCounters>
+            </div>
+        )
+    }
+    ReactDOM.render(<ResetCounters></ResetCounters>, document.querySelector("#root"));
+
+    </script>
+    
+</body>
+</html>
