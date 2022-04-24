@@ -6,6 +6,7 @@ import Counter from "./Counter"
 function CounterGroup(props) {
   let cval = props.counterNo;
   let rval = props.resetVal;
+  // console.log(cval);
   return (
     <div className="counter-group">
       <Counter Cno={1} cval={cval} rval={rval} resetParentProps={props.resetParentProps}></Counter>
